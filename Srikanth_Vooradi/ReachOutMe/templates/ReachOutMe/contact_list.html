@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact List{% endblock %}
-
 {% block content %}
-<h2>Contact List</h2>
-<a href="{% url 'contact_create' %}">Add New Contact</a>
-<ul>
+<h2>All Contacts</h2>
+<div>
     {% for contact in contacts %}
-<li>
-        {{ contact.name }} - {{ contact.email }}
-        <a href="{% url 'contact_detail' contact.id %}">View</a>
-        <a href="{% url 'contact_edit' contact.id %}">Edit</a>
-        <a href="{% url 'contact_delete' contact.id %}">Delete</a>
-    </li>
+    <div>
+        <h3>{{ contact.name }}</h3>
+        <p>Phone: {{ contact.phone }}</p>
+        <p>Email: {{ contact.email }}</p>
+        <a href="{% url 'ReachOutMe:contact_detail' contact.id %}">Details</a>
+        <a href="{% url 'ReachOutMe:contact_update' contact.id %}">Edit</a>
+        <a href="{% url 'ReachOutMe:contact_delete' contact.id %}">Delete</a>
+    </div>
+    {% empty %}
+    <p>No contacts available.</p>
     {% endfor %}
-</ul>
+</div>
+
+<footer>
+    <p>&copy; 2023 by Srikanth Vooradi</p>
+</footer>
 {% endblock %}

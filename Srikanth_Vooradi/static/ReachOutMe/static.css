@@ -1,0 +1,15 @@
+.contact-list {
+    margin-top: 20px;
+}
+
+.contact-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-name,
+.contact-email,
+.contact-time {
+    margin-bottom: 5px;
+}

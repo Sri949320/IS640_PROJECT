@@ -1,12 +1,20 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ form.instance.pk|yesno:"Edit Contact,Create New Contact" }}</title>
+</head>
+<body>
+    <h2>{{ form.instance.pk|yesno:"Edit Contact,Create New Contact" }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{{ form.instance.pk|yesno:'Save Changes,Create Contact' }}">
+        <a href="{% url 'ReachOutMe:contact_list' %}">Cancel</a>
+    </form>
 
-{% block title %}{% if form.instance.pk %}Edit Contact{% else %}New Contact{% endif %}{% endblock %}
-
-{% block content %}
-<h2>{% if form.instance.pk %}Edit Contact{% else %}Create Contact{% endif %}</h2>
-<form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
-{% endblock %}
+    <footer>
+        <p>&copy; 2023 by Srikanth Vooradi</p>
+    </footer>
+</body>
+</html>

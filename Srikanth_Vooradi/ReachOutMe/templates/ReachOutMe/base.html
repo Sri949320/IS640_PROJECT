@@ -1,25 +1,23 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Django App{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'ReachOutMe/styles.css' %}">
+    <title>{% block title %}ReachOutMe{% endblock %}</title>
+    <!-- Common CSS and JS links go here -->
 </head>
 <body>
     <header>
-        <h1>ReachOutMe</h1>
+        <!-- Common header content like navigation bar goes here -->
     </header>
-    
-    <div class="main">
+
+    <main>
         {% block content %}
-        {% endblock content %}
-    </div>
-    
+        <!-- Child templates will inject their specific content here -->
+        {% endblock %}
+    </main>
+
     <footer>
-        <p>Created by Srikanth Vooradi</p>
+        <p>&copy; 2023 by Srikanth Vooradi</p>
     </footer>
 </body>
 </html>
