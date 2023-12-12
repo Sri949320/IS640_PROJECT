@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Contact</title>
-</head>
-<body>
-    <h1>Create a Contact</h1>
-    <form method="post" action="{% url 'ReachOutMe:contact_create' %}">
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ form_title }}</h1>
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
-    <footer>
-        <p>© 2023 Created by Srikanth Vooradi</p>
-    </footer>
-</body>
-</html>
+{% endblock %}

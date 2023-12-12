@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}ReachOutMe{% endblock %}</title>
-    <!-- Common CSS and JS links go here -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <!-- Common header content like navigation bar goes here -->
+        <nav>
+            <ul>
+                <li><a href="{% url 'ReachOutMe:contact_list' %}">Contact List</a></li>
+                <li><a href="{% url 'ReachOutMe:contact_create' %}">Create Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         {% block content %}
-        <!-- Child templates will inject their specific content here -->
         {% endblock %}
     </main>
 

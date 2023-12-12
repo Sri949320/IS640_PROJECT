@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Delete Contact: {{ contact.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+        <a href="{% url 'ReachOutMe:contact_list' %}">Cancel</a>
+    </form>
+{% endblock %}

@@ -45,4 +45,4 @@ def contact_delete(request, pk):
     if request.method == 'POST':
         contact.delete()
         return redirect('contact_list')
-    return render(request, 'contact_confirm_delete.html', {'contact': contact})
+    return render(request, 'contact_delete.html', {'contact': contact})

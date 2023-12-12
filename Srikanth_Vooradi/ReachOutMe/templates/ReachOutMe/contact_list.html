@@ -1,23 +1,19 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h2>All Contacts</h2>
-<div>
-    {% for contact in contacts %}
-    <div>
-        <h3>{{ contact.name }}</h3>
-        <p>Phone: {{ contact.phone }}</p>
-        <p>Email: {{ contact.email }}</p>
-        <a href="{% url 'ReachOutMe:contact_detail' contact.id %}">Details</a>
-        <a href="{% url 'ReachOutMe:contact_update' contact.id %}">Edit</a>
-        <a href="{% url 'ReachOutMe:contact_delete' contact.id %}">Delete</a>
-    </div>
-    {% empty %}
-    <p>No contacts available.</p>
-    {% endfor %}
-</div>
+{% block title %}Contact List{% endblock title %}
 
-<footer>
-    <p>&copy; 2023 by Srikanth Vooradi</p>
-</footer>
+{% block content %}
+    <h1>Contact List</h1>
+    <!-- Add logic to loop through contacts and display them -->
+    <!-- Example: -->
+    {% for contact in contacts %}
+        <div>
+            <h2>{{ contact.name }}</h2>
+            <p>Email: {{ contact.email }}</p>
+            <p>Phone: {{ contact.phone }}</p>
+            <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">Details</a>
+            <a href="{% url 'ReachOutMe:contact_update' contact.pk %}">Edit</a>
+            <a href="{% url 'ReachOutMe:contact_delete' contact.pk %}">Delete</a>
+        </div>
+    {% endfor %}
 {% endblock %}

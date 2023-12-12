@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Management Home</title>
-</head>
-<body>
-    <h1>Welcome to Contact Management</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'ReachOutMe:contact_list' %}">View Contacts</a></li>
-            <li><a href="{% url 'ReachOutMe:contact_create' %}">Create New Contact</a></li>
-        </ul>
-    </nav>
+{% extends 'base.html' %}
 
-    <footer>
-        <p>&copy; 2023 by Srikanth Vooradi</p>
-    </footer>
-</body>
-</html>
+{% block content %}
+    <h1>Contact Manager</h1>
+    <a href="{% url 'ReachOutMe:contact_create' %}">Create New Contact</a>
+    <!-- Add more links or content as needed -->
+{% endblock %}
