@@ -1,19 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact List{% endblock title %}
-
+{% block title %}Contact List{% endblock %}
 {% block content %}
+<button class="btn btn-primary"><a href="{% url 'ReachOutMe:contact_create' %}" style="color: white; text-decoration:none;">Create Contact</a></button>
     <h1>Contact List</h1>
-    <!-- Add logic to loop through contacts and display them -->
-    <!-- Example: -->
-    {% for contact in contacts %}
-        <div>
-            <h2>{{ contact.name }}</h2>
-            <p>Email: {{ contact.email }}</p>
-            <p>Phone: {{ contact.phone }}</p>
-            <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">Details</a>
-            <a href="{% url 'ReachOutMe:contact_update' contact.pk %}">Edit</a>
-            <a href="{% url 'ReachOutMe:contact_delete' contact.pk %}">Delete</a>
-        </div>
-    {% endfor %}
+    {% if contacts %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td>
+                            <!-- <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">View</a> | -->
+                            <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">Edit</a> |
+                            <a href="{% url 'ReachOutMe:contact_delete' contact.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    {% else %}
+        <p>No contacts available.</p>
+    {% endif %}
 {% endblock %}

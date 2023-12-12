@@ -2,36 +2,9 @@
 
 {% block content %}
     <h1>{{ form_title }}</h1>
-    <form method="post" novalidate>
+    <form method="post">
         {% csrf_token %}
-        <div>
-            <label for="id_name">Name:</label>
-            {{ form.name }}
-            {% if form.name.errors %}
-                <span class="error">{{ form.name.errors.as_text }}</span>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_email">Email:</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <span class="error">{{ form.email.errors.as_text }}</span>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_phone">Phone:</label>
-            {{ form.phone }}
-            {% if form.phone.errors %}
-                <span class="error">{{ form.phone.errors.as_text }}</span>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_notes">Notes:</label>
-            {{ form.notes }}
-            {% if form.notes.errors %}
-                <span class="error">{{ form.notes.errors.as_text }}</span>
-            {% endif %}
-        </div>
-        <button type="submit">Submit</button>
+        {{ form.as_p }}
+        <input type="submit" value="Submit" class="btn btn-primary">
     </form>
 {% endblock %}
