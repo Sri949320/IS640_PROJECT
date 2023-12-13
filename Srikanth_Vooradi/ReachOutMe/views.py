@@ -8,7 +8,7 @@ from django.utils import timezone
 def contact_list(request):
     contacts = Contact.objects.all().order_by('-created_at')
     current_year = timezone.now().year
-    return render(request, 'contact_list.html', {'contacts': contacts, 'current_year': current_year})
+    return render(request, 'ReachOutMe/contact_list.html', {'contacts': contacts, 'current_year': current_year})
 
 # This function handles the creation of a new contact.
 def contact_create(request):
