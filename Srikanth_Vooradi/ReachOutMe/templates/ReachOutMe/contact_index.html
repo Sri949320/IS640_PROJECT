@@ -1,7 +1,60 @@
-{% extends 'base.html' %}
-
 {% block content %}
-    <h1>Contact Manager</h1>
-    <a href="{% url 'ReachOutMe:contact_create' %}">Create New Contact</a>
-    <!-- Add more links or content as needed -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    /* Custom CSS for styling */
+    .custom-card {
+        background-color: #f5f5f5; /* Light gray background color for the card */
+        border: 1px solid #ddd; /* Border color for the card */
+        padding: 20px; /* Padding for the card */
+    }
+
+    .custom-btn-primary {
+        background-color: #007bff; /* Blue color for the Submit button */
+        color: #fff; /* Text color for the Submit button */
+        font-weight: bold; /* Bold font weight */
+    }
+
+    .custom-btn-secondary {
+        background-color: #6c757d; /* Gray color for the Back button */
+        color: #fff; /* Text color for the Back button */
+    }
+
+    .custom-footer {
+        background-color: #343a40; /* Dark gray background color for the footer */
+        color: #fff; /* Text color for the footer */
+        padding: 10px 0; /* Padding for the footer */
+    }
+
+    .custom-footer a {
+        color: #007bff; /* Blue color for footer links */
+        text-decoration: none; /* Remove underlines from footer links */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Edit Contact: {{ form_title }}</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary custom-btn-primary">Submit</button>
+                            <a href="{% url 'ReachOutMe:contact_list' %}" class="btn btn-secondary custom-btn-secondary">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-5 custom-footer text-center">
+    &copy; 2023 Srikanth Vooradi. All rights reserved.
+</footer>
 {% endblock %}

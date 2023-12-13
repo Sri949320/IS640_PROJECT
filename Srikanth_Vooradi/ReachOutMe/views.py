@@ -21,12 +21,12 @@ def contact_create(request):
             return redirect('ReachOutMe:contact_list')  # Redirect to the contact list view
     else:
         form = ContactForm()
-    return render(request, 'contact_create.html', {'form': form, 'form_title': 'Create Contact'})
+    return render(request, 'ReachOutMe/contact_create.html', {'form': form, 'form_title': 'Create Contact'})
 
 # This function displays the detail of a contact.
 def contact_detail(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
-    return render(request, 'contact_detail.html', {'contact': contact})
+    return render(request, 'ReachOutMe/contact_detail.html', {'contact': contact})
 
 # This function updates an existing contact.
 def contact_update(request, pk):
@@ -38,7 +38,7 @@ def contact_update(request, pk):
             return redirect('ReachOutMe:contact_list')
     else:
         form = ContactForm(instance=contact)
-    return render(request, 'contact_form.html', {'form': form})
+    return render(request, 'ReachOutMe/contact_form.html', {'form': form})
 
 # This function deletes a contact.
 def contact_delete(request, pk):
@@ -46,4 +46,4 @@ def contact_delete(request, pk):
     if request.method == 'POST':
         contact.delete()
         return redirect('ReachOutMe:contact_list')  # Use the app namespace
-    return render(request, 'contact_delete.html', {'contact': contact})
+    return render(request, 'ReachOutMe/contact_delete.html', {'contact': contact})

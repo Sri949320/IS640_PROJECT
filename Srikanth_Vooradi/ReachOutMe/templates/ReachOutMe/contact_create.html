@@ -1,58 +1,82 @@
-{% extends 'base.html' %}
-
 {% block content %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-center">{{ form_title }}</h2>
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        <div class="form-group row">
-                            <label for="id_name" class="col-sm-2 col-form-label">Name:</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name">
-                                {% if form.name.errors %}
-                                    <div class="error">{{ form.name.errors.as_text }}</div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="id_email" class="col-sm-2 col-form-label">Email:</label>
-                            <div class="col-sm-10">
-                                <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email">
-                                {% if form.email.errors %}
-                                    <div class="error">{{ form.email.errors.as_text }}</div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="id_phone" class="col-sm-2 col-form-label">Phone:</label>
-                            <div class="col-sm-10">
-                                <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number">
-                                {% if form.phone.errors %}
-                                    <div class="error">{{ form.phone.errors.as_text }}</div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="id_notes" class="col-sm-2 col-form-label">Notes:</label>
-                            <div class="col-sm-10">
-                                <textarea id="id_notes" name="notes" class="form-control" placeholder="Enter any notes"></textarea>
-                                {% if form.notes.errors %}
-                                    <div class="error"></div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{% url 'ReachOutMe:contact_list' %}" class="btn btn-secondary">Back</a>
-                        </div>
-                    </form>
-                </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    /* Custom CSS for form container */
+    .custom-form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Custom CSS for form */
+    .custom-form {
+        background-color: #f5f5f5; /* Background color for the form */
+        border: 1px solid #ddd; /* Border color for the form */
+        padding: 20px; /* Padding for the form */
+        width: 100%;
+        max-width: 400px; /* Adjust the maximum width as needed */
+        margin: 20px; /* Add some margin */
+    }
+
+    /* Custom CSS for submit button */
+    .custom-btn {
+        background-color: #007bff; /* Primary color for the submit button */
+        color: #fff; /* Text color for the submit button */
+    }
+
+    /* Custom CSS for footer */
+    .custom-footer {
+        background-color: #f5f5f5; /* Background color for the footer */
+        padding: 10px; /* Padding for the footer */
+        text-align: center; /* Center-align text */
+        margin-top: 20px; /* Move the footer up */
+    }
+</style>
+
+<div class="custom-form-container">
+    <div class="custom-form">
+        <h2 class="card-title text-center text-primary">{{ form_title }}</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Name:</label>
+                <input type="text" id="id_name" name="name" class="form-control" placeholder="Enter your name">
+                {% if form.name.errors %}
+                    <div class="text-danger">{{ form.name.errors.as_text }}</div>
+                {% endif %}
             </div>
-        </div>
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input type="email" id="id_email" name="email" class="form-control" placeholder="Enter your email">
+                {% if form.email.errors %}
+                    <div class="text-danger">{{ form.email.errors.as_text }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone:</label>
+                <input type="tel" id="id_phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                {% if form.phone.errors %}
+                    <div class="text-danger">{{ form.phone.errors.as_text }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_notes">Notes:</label>
+                <textarea id="id_notes" name="notes" class="form-control" placeholder="Enter any notes"></textarea>
+                {% if form.notes.errors %}
+                    <div class="text-danger"></div>
+                {% endif %}
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-success custom-btn">Submit</button>
+                <a href="{% url 'ReachOutMe:contact_list' %}" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
     </div>
 </div>
+
+<footer class="custom-footer">
+    &copy; 2023 Srikanth Vooradi All rights reserved.
+</footer>
 {% endblock %}

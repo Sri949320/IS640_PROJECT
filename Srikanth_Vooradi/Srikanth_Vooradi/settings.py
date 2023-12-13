@@ -59,7 +59,7 @@ ROOT_URLCONF = 'Srikanth_Vooradi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\15623\Desktop\IS640_PROJECT\Srikanth_Vooradi\ReachOutMe\templates\ReachOutMe'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
