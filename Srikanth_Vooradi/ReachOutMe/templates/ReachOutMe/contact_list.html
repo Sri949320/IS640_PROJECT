@@ -1,36 +1,72 @@
 {% extends 'base.html' %}
 
-{% block title %}Contact List{% endblock %}
+{% block title %}Contact Management{% endblock %}
 {% block content %}
-<button class="btn btn-primary"><a href="{% url 'ReachOutMe:contact_create' %}" style="color: white; text-decoration:none;">Create Contact</a></button>
+<style>
+    /* Custom CSS styles */
+    .btn-create-contact {
+        background-color: #007bff; /* Blue color for Create Contact button */
+        color: white; /* White text color */
+        font-weight: bold; /* Bold font weight */
+        font-size: 18px; /* Larger font size */
+    }
+
+    /* Add custom styles to your table rows */
+    .contact-row {
+        background-color: #f7f7f7; /* Light gray background color for table rows */
+    }
+
+    /* Style for the View button */
+    .btn-view {
+        background-color: #17a2b8; /* Teal color for View button */
+        color: white; /* White text color */
+    }
+
+    /* Style for the Edit button */
+    .btn-edit {
+        background-color: #ffc107; /* Yellow color for Edit button */
+        color: white; /* White text color */
+    }
+
+    /* Style for the Delete button */
+    .btn-delete {
+        background-color: #dc3545; /* Red color for Delete button */
+        color: white; /* White text color */
+    }
+</style>
+
+<div class="container mt-4">
+    <a href="{% url 'ReachOutMe:contact_create' %}" class="btn btn-create-contact mb-3">Create Contact</a>
     <h1>Contact List</h1>
     {% if contacts %}
-        <table class="table">
-            <thead>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Actions</th>
+                    <th>Created At</th>
                 </tr>
             </thead>
             <tbody>
                 {% for contact in contacts %}
-                    <tr>
+                    <tr class="contact-row">
                         <td>{{ contact.name }}</td>
                         <td>{{ contact.email }}</td>
                         <td>{{ contact.phone }}</td>
                         <td>
-                            <!-- <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">View</a> | -->
-                            <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}">Edit</a> |
-                            <a href="{% url 'ReachOutMe:contact_delete' contact.pk %}">Delete</a>
+                            <a href="{% url 'ReachOutMe:contact_detail' contact.pk %}" class="btn btn-view btn-sm">View</a>
+                            <a href="{% url 'ReachOutMe:contact_update' contact.pk %}" class="btn btn-edit btn-sm">Edit</a>
+                            <a href="{% url 'ReachOutMe:contact_delete' contact.pk %}" class="btn btn-delete btn-sm">Delete</a>
                         </td>
+                        <td>{{ contact.created_at }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        
     {% else %}
         <p>No contacts available.</p>
     {% endif %}
+</div>
 {% endblock %}

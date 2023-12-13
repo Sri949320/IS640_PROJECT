@@ -35,7 +35,7 @@ def contact_update(request, pk):
         form = ContactForm(request.POST, instance=contact)
         if form.is_valid():
             form.save()
-            return redirect('ReachOutMe:contact_detail', pk=pk)
+            return redirect('ReachOutMe:contact_list')
     else:
         form = ContactForm(instance=contact)
     return render(request, 'contact_form.html', {'form': form})

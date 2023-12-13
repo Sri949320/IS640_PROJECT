@@ -13,3 +13,8 @@
 .contact-time {
     margin-bottom: 5px;
 }
+/* Custom button styles */
+.btn-delete {
+    background-color: red;
+    color: white;
+}
